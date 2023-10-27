@@ -1,0 +1,195 @@
+*jb.txt* Colorscheme for Vim inspired by JetBrains IDEs
+*jb*
+>
+                             ██ ██████  
+                             ██ ██   ██ 
+                             ██ ██████  
+                        ██   ██ ██   ██ 
+                         █████  ██████  
+                                        
+<
+
+==============================================================================
+CONTENTS                                                  *jb-contents*
+
+Introduction...........................................|jb-introduction|
+Installation...........................................|jb-installation|
+Usage..................................................|jb-usage|
+Configuration..........................................|jb-configuration|
+
+==============================================================================
+INTRODUCTION                                              *jb-introduction*
+
+I've always been a fan of JetBrains IDEs, and since moving to Vim I
+haven't yet been able to find a colorscheme that made me feel as at
+home as I did with the JetBrains themes. So I decided to attempt to
+port the colorschemes as best I could to Vim.
+
+The default colorscheme is based on JetBrains' 'Dark' theme (not
+darcula), but for those that like a light theme the 'Light' theme is
+also available.
+
+I also made a version of the dark theme with a slightly lighter
+background for those who want the dark feel but don't like the near-
+black background.
+
+Features~
+
+- Color-accurate port of JetBrains' 'Dark' and 'Light' themes
+- Support for 256-color terminals
+- Three theme variants, customizable to taste
+- Support for common file types and plugins
+- Italic support
+
+==============================================================================
+INSTALLATION                                              *jb-installation*
+
+------------------------------------------------------------------------------
+
+Using a plugin manager~
+  
+  Vim Plug:
+>
+    Plug 'devsjc/jb.vim'
+<
+  For better syntax highlighting, also install
+  https://github.com/sheerun/vim-polyglot
+
+------------------------------------------------------------------------------
+
+Vim8 Packages~
+
+    1. Create a new directory: `$ mkdir -p ~/.vim/pack/colors/opt`
+
+    2. Clone this repository: `$ git clone --depth 1 https://github.com/devsjc/vim-jb.git ~/.vim/pack/colors/opt/vim-jb`
+
+    3. Generate help tags: `:helptags ~/.vim/pack/colors/opt/vim-jb/doc/`
+
+    4. Add `packadd! vim-jb` to your vimrc.
+
+Note: If you install this color scheme to `pack/*/start`, you still need to add `packadd! vim-jb` to your vimrc. 
+See[sainnhe/gruvbox-material#60](https://github.com/sainnhe/gruvbox-material/issues/60)
+
+==============================================================================
+USAGE                                                        *jb-usage*
+
+------------------------------------------------------------------------------
+
+Vim~
+
+    To use the colorscheme, simply add the following to your vimrc:
+>
+    if has('termguicolors')
+        set termguicolors
+    endif
+
+    colorscheme jb
+<
+    If you want to modify the theme or configuration, do so before the
+    `colorscheme jb` line:
+>
+    let g:jb_style = 'light'
+    let g:jb_enable_italic = 1 
+    colorscheme jb
+<
+    For more information on configuration, see |jb-configuration|.
+
+==============================================================================
+CONFIGURATION                                          *jb-configuration*
+
+Note: All configuration options must be set before `colorscheme jb`
+
+------------------------------------------------------------------------------
+
+g:jb_style~                                                   *g:jb_style*
+
+The style of the theme to use.
+
+    Type: |String|
+    Options: 'dark', 'light', 'mid'
+    Default: 'dark'
+
+Example:
+>
+    let g:jb_style = 'light'
+<
+
+------------------------------------------------------------------------------
+
+g:jb_enable_italic~                                   *g:jb_enable_italic*
+
+Whether to use italics for certain syntax elements. Not all terminals support
+italics, so this option is disabled by default.
+
+    Type: |Number|
+    Options: 0, 1
+    Default: 0
+
+Example:
+>
+    let g:jb_enable_italic = 1
+<
+
+------------------------------------------------------------------------------
+
+g:jb_color_overrides~                             *g:jb_color_overrides*
+
+A dictionary of color overrides for the theme. Each entry should look like
+`'CATEGORY': {'gui': '#HEX-COLOR-CODE', 'cterm': 256-COLOR-CODE }`.
+
+    Type: |Dictionary|
+    Default: {}
+
+Example:
+>
+    let g:jb_color_overrides = {
+        \ 'keyword': {'gui': '#ff0000', 'cterm': 160},
+        \ 'type': {'gui': '#00ff00', 'cterm': 46},
+        \ }
+<
+The available categories can be found in `/path/to/vim-jb/colors/palettes.json`.
+
+
+==============================================================================
+FAQ                                                                *jb-faq*
+
+------------------------------------------------------------------------------
+
+The colors don't match those in the screenshots.~
+
+1. This color scheme is mainly designed for true colors, `set termguicolors`
+is required. Check output of `vim --version`, to ensure your Vim supports
+`termguicolors`.
+
+2. Check that your terminal emulator supports true colors. See 
+[this test script](https://unix.stackexchange.com/questions/404414/print-true-color-24-bit-test-pattern).
+
+3. If you are running Vim in Tmux, you need to override default true colors of
+Tmux, as Tmux cannot display true colors properly:
+[#1246 How to use true colors in vim under tmux?](https://github.com/tmux/tmux/issues/1246)
+
+------------------------------------------------------------------------------
+
+The configuration options don't work.~
+
+You should place them before `colorscheme jb`.
+
+------------------------------------------------------------------------------
+
+What's the font used here?~
+
+JetBrains Mono, of course! Download it [here](https://www.jetbrains.com/lp/mono/).
+
+------------------------------------------------------------------------------
+
+What's your status line configuration?~
+
+I use [Mistfly](https://github.com/bluz71/vim-mistfly-statusline) with the
+default configuration. See
+[this blog post](https://medium.com/@devsjc/from-jetbrains-to-vim-a-modern-vim-configuration-and-plugin-set-d58472a7d53d)
+for a deep dive into my whole Vim configuration.
+
+==============================================================================
+vim:tw=78:nosta:noet:ts=8:sts=0:ft=help:et:sw=4:fen:fdm=marker:fmr={{{,}}}:
+
+

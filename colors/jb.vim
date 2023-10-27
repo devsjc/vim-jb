@@ -1,8 +1,11 @@
+" ====================================================================================
 " Vim Color File
-" Name:       jb.vim
-" Maintainer: https://github.com/devsjc/jb.vim
+" URL:        https://github.com/devsjc/vim-jb
+" Filename:   colors/jb.vim
+" Author:     devsjc
 " License:    The MIT License (MIT)
 " Based On:   https://github.com/drewtempelmeyer/palenight.vim
+" ====================================================================================
 
 " === Initializaion ==================================================================
 
@@ -16,15 +19,18 @@ set t_Co=256
 
 let g:colors_name="jb"
 let g:jb_termcolors = 256
-" Not all terminals support italics properly. If yours does, opt-in.
-if !exists("g:jb_terminal_italics")
-  let g:jb_terminal_italics = 0
-endif
+
+let s:config = {
+      \ "style": "dark",
+      \ "enable_italic": 1,
+      \ "overrides": {},
+      \ }
+let s:colors = jb#GetColors(s:config.style, s:config.overrides)
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
 " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
-  if g:jb_terminal_italics == 0
+  if s:config.enable_italic == 0
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
@@ -45,56 +51,55 @@ function! s:h(group, style)
     \ "ctermul=" (has_key(a:style, "ctermul") ? a:style.ctermul : "NONE")
 endfunction
 
-let s:colors = jb#GetColors()
 
 " === JETBRAINS COLOR GROUPS ==========================================================
 
 " General
-call s:h("JBDefault", { "fg": s:colors.normal_white, "bg": s:colors.editor_bg }) " Standard text
-call s:h("JBHyperlink", { "fg": s:colors.link_blue, "gui": "underline", "cterm": "underline" })
-call s:h("JBTodo", { "fg": s:colors.todo_green }) " TODOs
-call s:h("JBSearchResult", { "bg": s:colors.search_green }) " Search results
-call s:h("JBFoldedText", { "fg": s:colors.folded_fg_white, "bg": s:colors.folded_bg_grey }) " Folded text
-call s:h("JBError", { "fg": s:colors.err_red, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
-call s:h("JBWarning", { "fg": s:colors.warning_yellow, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
-call s:h("JBCursor", { "fg": s:colors.normal_white, "bg": s:colors.cursor_blue }) " Cursor
+call s:h("JBDefault", { "fg": s:colors.text, "bg": s:colors.editor }) " Standard text
+call s:h("JBHyperlink", { "fg": s:colors.link, "gui": "underline", "cterm": "underline" })
+call s:h("JBTodo", { "fg": s:colors.todo }) " TODOs
+call s:h("JBSearchResult", { "bg": s:colors.search }) " Search results
+call s:h("JBFoldedText", { "fg": s:colors.comment, "bg": s:colors.folded }) " Folded text
+call s:h("JBError", { "fg": s:colors.err, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
+call s:h("JBWarning", { "fg": s:colors.warning, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
+call s:h("JBCursor", { "fg": s:colors.text, "bg": s:colors.folded }) " Cursor
 
 " Language defaults
-call s:h("JBString", { "fg": s:colors.string_green }) " Strings
-call s:h("JBStringRef", { "fg": s:colors.commenttag_green }) "References within strings
-call s:h("JBNumber", { "fg": s:colors.number_blue }) " Numbers (floats, ints)
-call s:h("JBKeyword", { "fg": s:colors.keyword_orange }) " Keywords
-call s:h("JBFunction", { "fg": s:colors.function_blue }) " Functions (calls and definitions)
-call s:h("JBComment", { "fg": s:colors.comment_grey }) " Comment text
-call s:h("JBCommentRef", { "fg": s:colors.commentref_grey }) " References within comments e.g. to classes
-call s:h("JBConstant", { "fg": s:colors.const_purple }) " Constants
-call s:h("JBType", { "fg": s:colors.type_orange }) " Types
-call s:h("JBTag", { "fg": s:colors.tag_yellow }) " Tags
-call s:h("JBMatchedBracket", { "fg": s:colors.normal_white, "bg": s:colors.folded_bg_grey, "gui": "bold", "cterm": "bold" }) " Matching brackets
+call s:h("JBString", { "fg": s:colors.string }) " Strings
+call s:h("JBStringRef", { "fg": s:colors.stringref }) "References within strings
+call s:h("JBNumber", { "fg": s:colors.number }) " Numbers (floats, ints)
+call s:h("JBKeyword", { "fg": s:colors.keyword }) " Keywords
+call s:h("JBFunction", { "fg": s:colors.function }) " Functions (calls and definitions)
+call s:h("JBComment", { "fg": s:colors.comment }) " Comment text
+call s:h("JBCommentRef", { "fg": s:colors.commentref }) " References within comments e.g. to classes
+call s:h("JBConstant", { "fg": s:colors.const }) " Constants
+call s:h("JBType", { "fg": s:colors.type }) " Types
+call s:h("JBTag", { "fg": s:colors.tag }) " Tags
+call s:h("JBMatchedBracket", { "fg": s:colors.text, "bg": s:colors.folded, "gui": "bold", "cterm": "bold" }) " Matching brackets
 
 " Diff and Merge
-call s:h("JBDiffAddedLine", { "bg": s:colors.diff_addedline_bg_green }) " Newly inserted lines in diff
-call s:h("JBDiffChangedLine", { "bg": s:colors.diff_changedline_bg_blue }) " Changed lines in diff
-call s:h("JBDiffChangedText", { "bg": s:colors.diff_changedtext_bg_blue }) " Changed text in diff
-call s:h("JBDiffDeletedLine", { "bg": s:colors.diff_deletedline_bg_grey }) " Deleted lines in diff
+call s:h("JBDiffAddedLine", { "bg": s:colors.diffadd }) " Newly inserted lines in diff
+call s:h("JBDiffChangedLine", { "bg": s:colors.diffmod }) " Changed lines in diff
+call s:h("JBDiffChangedText", { "bg": s:colors.difftext }) " Changed text in diff
+call s:h("JBDiffDeletedLine", { "bg": s:colors.diffdel }) " Deleted lines in diff
 
 " Gutter
-call s:h("JBGutterAddedLine", { "fg": s:colors.gutteradd_green }) " Added lines in gutter
-call s:h("JBGutterChangedLine", { "fg": s:colors.gutterchange_blue }) " Changed lines in gutter
-call s:h("JBGutterDeletedLine", { "fg": s:colors.gutterdel_grey }) " Deleted lines in gutter
-call s:h("JBGutterLineNr", { "fg": s:colors.gutter_fg_grey }) " Line numbers in gutter
+call s:h("JBGutterAddedLine", { "fg": s:colors.gutteradd }) " Added lines in gutter
+call s:h("JBGutterChangedLine", { "fg": s:colors.guttermod }) " Changed lines in gutter
+call s:h("JBGutterDeletedLine", { "fg": s:colors.gutterdel }) " Deleted lines in gutter
+call s:h("JBGutterLineNr", { "fg": s:colors.diffdel }) " Line numbers in gutter
 
 " UI
-call s:h("JBEditorBG", { "bg": s:colors.editor_bg1 }) " Editor background
-call s:h("JBTree", { "fg": s:colors.normal_white, "bg": s:colors.tree_bg }) " Tree text
-call s:h("JBTreeBG", { "bg": s:colors.tree_bg }) " Tree background
-call s:h("JBDivider", { "fg": s:colors.folded_fg_white }) " Divider between panes
+call s:h("JBEditorBG", { "bg": s:colors.editor }) " Editor background
+call s:h("JBTree", { "fg": s:colors.text, "bg": s:colors.folded }) " Tree text
+call s:h("JBTreeBG", { "bg": s:colors.folded }) " Tree background
+call s:h("JBDivider", { "fg": s:colors.diffdel }) " Divider between panes
 
 " === VIM HIGHLIGHT GROUPS ============================================================
 " See :help highlight-groups for more information
 
 " --- Major ---
-call s:h("Normal", {"fg": s:colors.normal_white, "bg": s:colors.editor_bg1}) " Normal text
+call s:h("Normal", {"fg": s:colors.text, "bg": s:colors.editor}) " Normal text
 highlight! link Comment JBComment
 highlight! link Constant JBConstant
 highlight! link Identifier JBFunction
@@ -172,8 +177,8 @@ highlight clear HintLine
 highlight! link ErrorMsg Error
 highlight! link WarningMsg JBWarning
 highlight! link Question JBWarning
-call s:h("ModeMsg", { "fg": s:colors.normal_white, "gui": "bold", "cterm": "bold" }) "Mode message
-call s:h("MoreMsg", { "fg": s:colors.function_blue, "gui": "bold", "cterm": "bold" }) "More message
+call s:h("ModeMsg", { "fg": s:colors.text, "gui": "bold", "cterm": "bold" }) "Mode message
+call s:h("MoreMsg", { "fg": s:colors.function, "gui": "bold", "cterm": "bold" }) "More message
 highlight! link SpellBad Underline
 highlight! link NonText LineNr
 highlight! link WhiteSpace LineNr
@@ -183,17 +188,17 @@ highlight! link SpecialKey LineNr
 highlight! link Pmenu JBTree
 highlight! link PmenuSbar Comment
 highlight! link PmenuSel Cursor
-call s:h("PmenuKind", { "fg": s:colors.type_orange, "bg": s:colors.tree_bg }) "Popup menu kind
-call s:h("PmenuExtra", { "fg": s:colors.comment_grey, "bg": s:colors.tree_bg }) "Popup menu extra
+call s:h("PmenuKind", { "fg": s:colors.type, "bg": s:colors.folded }) "Popup menu kind
+call s:h("PmenuExtra", { "fg": s:colors.comment, "bg": s:colors.folded }) "Popup menu extra
 highlight! link WildMenu PmenuSel
 highlight! link Directory String
-call s:h("FloatBorder", { "fg": s:colors.gutter_fg_grey, "bg": s:colors.editor_bg1 }) "Float border
-call s:h("NormalFloat", { "fg": s:colors.normal_white, "bg": s:colors.editor_bg1 }) "Normal float'
+call s:h("FloatBorder", { "fg": s:colors.diffdel, "bg": s:colors.editor }) "Float border
+highlight! link NormalFloat Normal
 highlight! link Terminal Normal
 highlight! link EndOfBuffer JBEditorBG
 highlight! link StatusLine JBTree
 highlight! link StatusLineTerm StatusLine
-call s:h("StatusLineNC", { "fg": s:colors.gutter_fg_grey, "bg": s:colors.tree_bg }) "Status line inactive
+call s:h("StatusLineNC", { "fg": s:colors.diffdel, "bg": s:colors.folded }) "Status line inactive
 highlight! link StatusLineTermNC StatusLineNC
 highlight! link TabLine JBTree
 highlight! link TabLineFill JBTree
@@ -203,18 +208,23 @@ highlight! link WinSeparator VertSplit
 highlight! link ToolbarButton Cursor
 
 " Visual mode
-call s:h("Visual", { "bg": s:colors.folded_bg_grey }) "Visual selection
-call s:h("VisualNOS", { "bg": s:colors.folded_bg_grey, "gui": "underline", "cterm":  "underline" }) "Visual selection
-call s:h("QuickFixLine", { "fg": s:colors.link_blue, "gui": "bold", "cterm": "bold" }) "Quickfix selected line
+call s:h("Visual", { "bg": s:colors.folded }) "Visual selection
+call s:h("VisualNOS", { "bg": s:colors.folded, "gui": "underline", "cterm":  "underline" }) "Visual selection
+call s:h("QuickFixLine", { "fg": s:colors.link, "gui": "bold", "cterm": "bold" }) "Quickfix selected line
 highlight! link Debug Tag
-call s:h("debugBreakpoint", { "fg": s:colors.normal_white, "bg": s:colors.errsign_red }) "Debug
+call s:h("debugBreakpoint", { "fg": s:colors.text, "bg": s:colors.err1 }) "Debug
 
 " === LANGUAGE SPECIFIC HIGHLIGHTS ====================================================
 
 " --- Go (vim-go/polyglot) ---
-call s:h("goPackage", { "fg": s:colors.package_yellow })
+call s:h("goPackage", { "fg": s:colors.tag })
 highlight! link goBuiltins Type
-call s:h("goField", { "fg": s:colors.localstruct_blue })
+call s:h("goField", { "fg": s:colors.struct })
+
+" --- JSON (vim-json/polyglot) ---
+
+highlight! link jsonKeyword Constant
+highlight! link jsonBoolean Keyword
 
 " --- Markdown ---
 highlight! link markdownCode String
@@ -285,14 +295,16 @@ let g:fzf_colors = {
       \ 'header': ['fg', 'Const']
       \ }
 
+
 " --- MistFly ---
-call s:h("MistflyNormal", { "fg": s:colors.editor_bg1, "bg": s:colors.commenttag_green }) " Normal text
-call s:h("MistflyCommand", { "fg": s:colors.editor_bg1, "bg": s:colors.warning_yellow }) " Command text
-call s:h("MistflyInsert", { "fg": s:colors.editor_bg1, "bg": s:colors.function_blue }) " Insert text
-call s:h("MistflyVisual", { "fg": s:colors.editor_bg1, "bg": s:colors.keyword_orange }) " Visual text
-call s:h("MistflyReplace", { "fg": s:colors.editor_bg1, "bg": s:colors.errsign_red }) " Replace text
+call s:h("MistflyNormal", { "fg": s:colors.text, "bg": s:colors.commentref }) " Normal text
+call s:h("MistflyCommand", { "fg": s:colors.editor, "bg": s:colors.warning }) " Command text
+call s:h("MistflyInsert", { "fg": s:colors.editor, "bg": s:colors.function }) " Insert text
+call s:h("MistflyVisual", { "fg": s:colors.editor, "bg": s:colors.keyword }) " Visual text
+call s:h("MistflyReplace", { "fg": s:colors.editor, "bg": s:colors.err1 }) " Replace text
 
 " --- Fern ---
+highlight! link FernRootSymbol String
 highlight! link FernRootText String
 highlight! link FernBranchSymbol String
 highlight! link FernBranchText ModeMsg
