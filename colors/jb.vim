@@ -158,6 +158,7 @@ highlight! link CursorIM Cursor
 highlight! link CursorLine JBTreeBG
 highlight! link CursorColumn CursorLine
 highlight! link MatchParen JBMatchedBracket
+highlight! link Title Constant
 
 " --- Diff and Merge ---
 highlight! link DiffAdd JBDiffAddedLine

@@ -8,7 +8,6 @@
 
 let s:flines = readfile('autoload/palettes.json')
 let s:jb_palettes = js_decode(join(s:flines))
-echom: s:jb_palettes
 let s:colors = {}
 
 function! jb#GetConfig()
