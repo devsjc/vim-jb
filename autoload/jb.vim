@@ -5,8 +5,8 @@
 " License:  The MIT License (MIT)
 " Based On: https://github.com/sainnhe/sonokai
 " ===================================================================================
-
-let s:flines = readfile('autoload/palettes.json')
+let s:path = expand('<sfile>:p:h')
+let s:flines = readfile(s:path + 'autoload/palettes.json')
 let s:jb_palettes = js_decode(join(s:flines))
 let s:colors = {}
 
