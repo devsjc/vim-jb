@@ -55,6 +55,10 @@ colorscheme jb
 Configuration
 --------------------------------------------------------------------------
 
+*Note*: All configuration must be placed before the `colorscheme jb` line.
+Further configuration details can be found via
+[:help jb-configuration](doc/jb.txt).
+
 **Choosing the style**
 
 The style is set with `g:jb_style` variable. For instance:
@@ -66,5 +70,28 @@ colorscheme jb
 
 **Enabling italics**
 
+If your terminal emulator supports italics, opt in using
 
+```vim
+let g:jb_enable_italics=1
+colorscheme jb
+```
+
+**Modifying a color**
+
+To choose your own colour, pick a category from the
+[palettes](autoload/palettes.json) file, and define your overrides in a
+dictionary containing your replacement `gui` and `cterm` colours:
+
+```vim
+let g:jb_color_overrides={
+    \"keyword": {"gui": "#ff00ff", "cterm": "16"}
+    \}
+```
+
+
+Related Projects
+---------------------------------------------------------------------------
+
+- Iterm2 Themes (coming soon!)
 
