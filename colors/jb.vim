@@ -218,8 +218,9 @@ call s:h("debugBreakpoint", { "fg": s:colors.text, "bg": s:colors.err1 }) "Debug
 " === LANGUAGE SPECIFIC HIGHLIGHTS ====================================================
 
 " --- Go (vim-go/polyglot) ---
-call s:h("goPackage", { "fg": s:colors.tag })
+highlight! link goPackage Tag
 highlight! link goBuiltins Type
+highlight! link goFunction Function
 call s:h("goField", { "fg": s:colors.struct })
 
 " --- JSON (vim-json/polyglot) ---
