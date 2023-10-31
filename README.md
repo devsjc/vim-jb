@@ -1,4 +1,4 @@
-![Theme Screenshot](assets/screenshot.jpg)
+![Theme Screenshot](assets/screenshot.png)
 
 A set of colour schemes for Vim, inspired by Jetbrains' IDEs.
 
