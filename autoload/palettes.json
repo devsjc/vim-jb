@@ -61,8 +61,8 @@
   },
   "light": {
     "editor":       {"hex": "#FFFFFF", "rgb": [255, 255, 255],  "xterm": 231},
-    "folded":       {"hex": "#393B40", "rgb": [57, 59, 64],     "xterm": 18},
-    "diffdel":      {"hex": "#484A4A", "rgb": [72, 74, 74],     "xterm": 235},
+    "folded":       {"hex": "#E9F5E6", "rgb": [233, 245, 230],  "xterm": 194},
+    "diffdel":      {"hex": "#D6D6D6", "rgb": [214, 214, 214],  "xterm": 188},
     "comment":      {"hex": "#8C8C8C", "rgb": [122, 126, 133],  "xterm": 102},
     "gutterdel":    {"hex": "#767A8A", "rgb": [118, 122, 138],  "xterm": 102},
     "commentref":   {"hex": "#A1A1A1", "rgb": [161, 161, 161],  "xterm": 145},
@@ -75,7 +75,7 @@
     "warning":      {"hex": "#A66F00", "rgb": [166, 111, 0],    "xterm": 130},
     "todo":         {"hex": "#008DDE", "rgb": [0, 141, 222],    "xterm": 32},
     "gutteradd":    {"hex": "#7FC784", "rgb": [127, 199, 132],  "xterm": 114},
-    "diffadd":      {"hex": "#294436", "rgb": [41, 68, 54],     "xterm": 23},
+    "diffadd":      {"hex": "#BEE6BE", "rgb": [190, 230, 190],  "xterm": 151},
     "search":       {"hex": "#CCCCFF", "rgb": [204, 204, 255],  "xterm": 189},
     "string":       {"hex": "#067D17", "rgb": [6, 125, 23],     "xterm": 28},
     "stringref":    {"hex": "#68A67E", "rgb": [104, 166, 126],  "xterm": 72},
@@ -84,8 +84,8 @@
     "link":         {"hex": "#006DCC", "rgb": [0, 109, 204],    "xterm": 75},
     "guttermod":    {"hex": "#88ADF7", "rgb": [136, 173, 247],  "xterm": 111},
     "struct":       {"hex": "#6FAFBD", "rgb": [111, 175, 189],  "xterm": 39},
-    "diffmod":      {"hex": "#283541", "rgb": [40, 53, 65],     "xterm": 23},
-    "difftext":     {"hex": "#385570", "rgb": [56, 85, 112],    "xterm": 59},
+    "diffmod":      {"hex": "#C2D8F2", "rgb": [194, 216, 242],  "xterm": 153},
+    "difftext":     {"hex": "#B6D2F2", "rgb": [182, 210, 242],  "xterm": 153},
     "const":        {"hex": "#871094", "rgb": [153, 16, 148],   "xterm": 90},
     "instruction":  {"hex": "#CDA3E6", "rgb": [205, 163, 230],  "xterm": 189}
   }
