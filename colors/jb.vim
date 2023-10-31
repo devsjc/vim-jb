@@ -58,7 +58,7 @@ call s:h("JBSearchResult", { "bg": s:colors.search }) " Search results
 call s:h("JBFoldedText", { "fg": s:colors.comment, "bg": s:colors.folded }) " Folded text
 call s:h("JBError", { "fg": s:colors.err, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
 call s:h("JBWarning", { "fg": s:colors.warning, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
-call s:h("JBCursor", { "fg": s:colors.text, "bg": s:colors.folded }) " Cursor
+call s:h("JBCursor", { "fg": s:colors.editor, "bg": s:colors.comment }) " Cursor
 
 " Language defaults
 call s:h("JBString", { "fg": s:colors.string }) " Strings
@@ -251,6 +251,12 @@ highlight! link mkdSnippetSHELL String
 highlight! link mkdURL JBHyperlink
 highlight! link mkdHeading Const
 
+" -- Javascript (vim-javascript/polyglot) ---
+highlight! link jsDecorator Tag
+highlight! link jsDecoratorFunction Tag
+highlight! link jsxTagName Tag
+highlight! link jsxAttrib Normal
+
 " --- HTML ---
 highlight! link htmlTag Tag
 highlight! link htmlEndTag Tag
@@ -258,7 +264,7 @@ highlight! link htmlTagN Tag
 highlight! link htmlTagName Tag
 highlight! link htmlSpecialTagName Tag
 highlight! link htmlArg Normal
-highlight! link htmlScriptTag Const
+highlight! link htmlScriptTag Tag
 highlight! link htmlString String
 
 " --- Vim ---
