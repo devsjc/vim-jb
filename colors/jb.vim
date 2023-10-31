@@ -20,11 +20,7 @@ set t_Co=256
 let g:colors_name="jb"
 let g:jb_termcolors = 256
 
-let s:config = {
-      \ "style": "dark",
-      \ "enable_italic": 1,
-      \ "overrides": {},
-      \ }
+let s:config = jb#GetConfig()
 let s:colors = jb#GetColors(s:config.style, s:config.overrides)
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
@@ -107,7 +103,7 @@ highlight! link Statement JBKeyword
 highlight! link PreProc JBCommentRef
 highlight! link Type JBType
 highlight! link Special JBKeyword
-call s:h("Underlined", { "gui": "underline", "cterm": "underline" })
+call s:h("Underline", { "gui": "underline", "cterm": "underline" })
 call s:h("Ignore", {})
 highlight! link Error JBError
 highlight! link Todo JBTodo
@@ -181,6 +177,9 @@ highlight! link Question JBWarning
 call s:h("ModeMsg", { "fg": s:colors.text, "gui": "bold", "cterm": "bold" }) "Mode message
 call s:h("MoreMsg", { "fg": s:colors.function, "gui": "bold", "cterm": "bold" }) "More message
 highlight! link SpellBad Underline
+highlight! link SpellCap Underline
+highlight! link SpellRare Underline
+highlight! link SpellLocal Underline
 highlight! link NonText LineNr
 highlight! link WhiteSpace LineNr
 highlight! link SpecialKey LineNr
@@ -257,6 +256,7 @@ highlight! link htmlTag Tag
 highlight! link htmlEndTag Tag
 highlight! link htmlTagN Tag
 highlight! link htmlTagName Tag
+highlight! link htmlSpecialTagName Tag
 highlight! link htmlArg Normal
 highlight! link htmlScriptTag Const
 highlight! link htmlString String
@@ -299,7 +299,7 @@ let g:fzf_colors = {
 
 
 " --- MistFly ---
-call s:h("MistflyNormal", { "fg": s:colors.text, "bg": s:colors.commentref }) " Normal text
+call s:h("MistflyNormal", { "fg": s:colors.editor, "bg": s:colors.commentref }) " Normal text
 call s:h("MistflyCommand", { "fg": s:colors.editor, "bg": s:colors.warning }) " Command text
 call s:h("MistflyInsert", { "fg": s:colors.editor, "bg": s:colors.function }) " Insert text
 call s:h("MistflyVisual", { "fg": s:colors.editor, "bg": s:colors.keyword }) " Visual text
@@ -314,6 +314,25 @@ highlight! link FernLeafSymbol Function
 highlight! link FernGitStatusIndex DiffAdd
 highlight! link FernGitStatusWorktree DiffText
 highlight! link FernGitStatusUntracked DiffAdd
+
+" --- NERDTree ---
+highlight! link NERDTreeDir ModeMsg
+highlight! link NERDTreeDirSlash ModeMsg
+highlight! link NERDTreeOpenable ModeMsg
+highlight! link NERDTreeClosable ModeMsg
+highlight! link NERDTreeFile Normal
+highlight! link NERDTreeExecFile Normal
+highlight! link NERDTreeUp String
+highlight! link NERDTreeCWD Normal
+highlight! link NERDTreeHelp Normal
+
+" --- ALE (github.com/dense-analysis/ale) ---
+highlight! link ALEError JBError
+highlight! link ALEWarning JBWarning
+highlight! link ALEInfo Underline
+highlight! link ALEErrorSign JBError
+highlight! link ALEWarningSign JBWarning
+highlight! link ALEInfoSign Underline
 
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
