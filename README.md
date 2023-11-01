@@ -15,6 +15,9 @@ Features
 Not only are the colours accurate to the default JetBrains themes, they 
 also attempt to emulate the original colour hierarchy. For instance, JSON
 keywords are highlighted in the `Constant` colour, not the keyword colour.
+This of course is limited by the available highlight groups in Vim, and
+even with [vim-polyglot](https://github.com/sheerun/vim-polyglot) it is
+not possible to get an exact match, so expect a best-effort outcome.
 
 **Multiple Palettes**
 
@@ -112,9 +115,14 @@ let g:jb_color_overrides={
     \}
 ```
 
-
 Related Projects
 ---------------------------------------------------------------------------
 
 - Iterm2 Themes (coming soon!)
 
+
+Contribution and support
+---------------------------------------------------------------------------
+
+Enjoy the theme? Give it a star on GitHub! Feel free to create pull
+requests with any new highlight rules that have been missed.
