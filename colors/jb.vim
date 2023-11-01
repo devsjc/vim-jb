@@ -68,6 +68,7 @@ call s:h("JBKeyword", { "fg": s:colors.keyword }) " Keywords
 call s:h("JBFunction", { "fg": s:colors.function }) " Functions (calls and definitions)
 call s:h("JBComment", { "fg": s:colors.comment }) " Comment text
 call s:h("JBCommentRef", { "fg": s:colors.commentref }) " References within comments e.g. to classes
+call s:h("JBDocComment", { "fg": s:colors.doccomment }) " Documentation comments
 call s:h("JBConstant", { "fg": s:colors.const }) " Constants
 call s:h("JBType", { "fg": s:colors.type }) " Types
 call s:h("JBTag", { "fg": s:colors.tag }) " Tags
@@ -251,11 +252,31 @@ highlight! link mkdSnippetSHELL String
 highlight! link mkdURL JBHyperlink
 highlight! link mkdHeading Const
 
-" -- Javascript (vim-javascript/polyglot) ---
+" --- Javascript (vim-javascript/polyglot) ---
 highlight! link jsDecorator Tag
 highlight! link jsDecoratorFunction Tag
 highlight! link jsxTagName Tag
 highlight! link jsxAttrib Normal
+
+" --- Rust (rust.vim/polyglot) ---
+highlight! link rustModPath Text
+highlight! link rustIdentifier Text
+highlight! link rustAttribute Tag
+highlight! link rustUnsafeKeyword Keyword
+highlight! link rustStructure Keyword
+highlight! link rustMacro Tag
+highlight! link rustStorage Keyword
+highlight! link rustCharacter String
+highlight! link rustSigil Text
+highlight! link rustCommentLineDoc JBDocComment
+
+" --- Typescript (vim-typescript/polyglot) ---
+highlight! link typescriptStorageClass Text
+highlight! link typescriptEndColons Text
+highlight! link typescriptMessage String
+highlight! link typescriptGlobalObjects Constant 
+highlight! link typescriptBraces Text
+highlight! link typescriptParens Text
 
 " --- HTML ---
 highlight! link htmlTag Tag
