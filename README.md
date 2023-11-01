@@ -1,3 +1,8 @@
+VIM-JB
+===========================================================================
+
+![Theme Palette](assets/divider.png)
+
 ![Theme Screenshot](assets/screenshot.png)
 
 A set of colour schemes for Vim, inspired by Jetbrains' IDEs.
@@ -16,7 +21,7 @@ keywords are highlighted in the `Constant` colour, not the keyword colour.
 Three palette options are packaged: 
 - `dark`: Uses the colours from the 'Dark' JetBrains theme
 - `light`: For those who prefer a light theme, follows the 'Light' theme
-- `mid`: A bonus theme: The `dark` palette with a lighter background
+- `mid`: A bonus theme - The `dark` palette with a lighter background
 
 **Bring Your Own Colours**
 
@@ -25,12 +30,28 @@ Any of the palette colours can be overridden. See
 [:help g:jb_color_overrides](doc/jb.txt) for how to
 implement your own colours.
 
-**Truecolor, cterm,  and italic support**
+**Semantic language syntax highlighting**
 
-Built with true colours in mind, these schemes also support 256 colour
-terminals. You can also opt-in to italics if your terminal emulator supports
-them. See [Configuration](#configuration) or 
+Includes more in depth highlighting rules, ported from the original
+themes, in accordance with the highlight groups of the language syntax
+packs in [vim-polyglot](https://github.com/sheerun/vim-polyglot). It is
+recommended you install polyglot alongside this colorscheme for the best
+highlighting.
+
+**Truecolor, cterm, and italic support**
+
+Whilst built with true colours in mind, vim-jb's schemes also support 256
+colour terminals. You can also opt-in to italics if your terminal emulator
+supports them. See [Configuration](#configuration) or 
 [:help jb-configuration](doc/jb.txt) for more details.
+
+**Plugins out the box**
+
+Includes highlight links for popular Vim plugins such as GitGutter,
+NERDTree, ALE, FZF, Fugitive, and more. For those without included groups,
+the `JB*` top-level highlight groups in the plugin configuration allow for 
+easy and clear custom mapping in a `.vimrc` that won't affect other
+schemes. See [colors/jb.vim](colors/jb.vim) for the groups.
 
 
 Installation

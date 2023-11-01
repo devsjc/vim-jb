@@ -340,6 +340,20 @@ highlight! link ALEErrorSign JBError
 highlight! link ALEWarningSign JBWarning
 highlight! link ALEInfoSign Underline
 
+" --- COC (github.com/neoclide/coc.nvim) ---
+highlight! link CocErrorSign JBError
+highlight! link CocWarningSign JBWarning
+highlight! link CocInfoSign Underline
+highlight! link CocHintSign Underline
+highlight! link CocMarkdownCode String
+highlight! link CocPumShortcut Cursor
+highlight! link CocPumMenu Pmenu
+highlight! link CocMenuSel PmenuSel
+highlight! link CocInlayHint LineNr
+highlight! link CocGitAddedSign JBGutterAddedLine
+highlight! link CocGitChangeSign JBGutterChangedLine
+highlight! link CocGitRemovedSign JBGutterDeletedLine
+
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
