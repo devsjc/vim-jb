@@ -1,4 +1,5 @@
 <div align="center">
+    </br>
     <img src="assets/logo.png" width="75" alt="Logo"/>
     <h3>JB for Vim</h3>
     <p> A set of colour schemes for Vim, inspired by Jetbrains' IDEs.</p>
@@ -118,7 +119,8 @@ let g:jb_color_overrides={
 Related Projects
 ---------------------------------------------------------------------------
 
-- Iterm2 themes [terminals-jb](https://github.com/devsjc/terminals-jb)
+- Iterm2 themes: [terminals-jb](https://github.com/devsjc/terminals-jb)
+- Kitty themes: [terminals-jb](https://github.com/devsjc/terminals-jb)
 
 
 Contribution and support
