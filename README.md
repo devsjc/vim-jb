@@ -118,7 +118,7 @@ let g:jb_color_overrides={
 Related Projects
 ---------------------------------------------------------------------------
 
-- Iterm2 Themes (coming soon!)
+- Iterm2 themes [terminals-jb](https://github.com/devsjc/terminals-jb)
 
 
 Contribution and support
