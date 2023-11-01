@@ -73,6 +73,7 @@ call s:h("JBConstant", { "fg": s:colors.const }) " Constants
 call s:h("JBType", { "fg": s:colors.type }) " Types
 call s:h("JBTag", { "fg": s:colors.tag }) " Tags
 call s:h("JBMatchedBracket", { "fg": s:colors.text, "bg": s:colors.folded, "gui": "bold", "cterm": "bold" }) " Matching brackets
+call s:h("JBStruct", { "fg": s:colors.struct })
 
 " Diff and Merge
 call s:h("JBDiffAddedLine", { "bg": s:colors.diffadd }) " Newly inserted lines in diff
@@ -221,7 +222,7 @@ call s:h("debugBreakpoint", { "fg": s:colors.text, "bg": s:colors.err1 }) "Debug
 highlight! link goPackage Tag
 highlight! link goBuiltins Type
 highlight! link goFunction Function
-call s:h("goField", { "fg": s:colors.struct })
+highlight! link goField JBStruct
 
 " --- JSON (vim-json/polyglot) ---
 
@@ -259,14 +260,24 @@ highlight! link jsxTagName Tag
 highlight! link jsxAttrib Normal
 
 " --- Rust (rust.vim/polyglot) ---
+highlight! link rustTrait Text
+highlight! link rustConstant Constant
 highlight! link rustModPath Text
+highlight! link rustEnum Text
 highlight! link rustIdentifier Text
 highlight! link rustAttribute Tag
 highlight! link rustUnsafeKeyword Keyword
 highlight! link rustStructure Keyword
 highlight! link rustMacro Tag
+highlight! link rustMacroRepeatDelimiters rustMacro
+highlight! link rustMacroVariable Function
+highlight! link rustLifetime JBStruct
+highlight! link rustLabel JBStruct
 highlight! link rustStorage Keyword
 highlight! link rustCharacter String
+highlight! link rustSelf Keyword
+highlight! link rustAsmConstExpr Constant
+highlight! link rustAsmConst Constant
 highlight! link rustSigil Text
 highlight! link rustCommentLineDoc JBDocComment
 
