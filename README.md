@@ -1,11 +1,11 @@
-VIM-JB
-===========================================================================
-
-![Theme Palette](assets/divider.png)
+<div align="center">
+    <img src="assets/logo.png" width="75" alt="Logo"/>
+    <h3>JB for Vim</h3>
+    <p> A set of colour schemes for Vim, inspired by Jetbrains' IDEs.</p>
+</div>
 
 ![Theme Screenshot](assets/screenshot.png)
 
-A set of colour schemes for Vim, inspired by Jetbrains' IDEs.
 
 Features
 ---------------------------------------------------------------------------
