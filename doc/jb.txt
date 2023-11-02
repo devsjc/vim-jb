@@ -176,6 +176,22 @@ You should place them before `colorscheme jb`.
 
 ------------------------------------------------------------------------------
 
+How can I change the highlight links without changing the palette?
+
+You can also change highlight groups, overriding what is set in the plugin.
+Say you prefer how Android Studio uses the `Type` colour for Kotlin
+structures, instead of the less saturated `Keyword` of IntelliJ Idea.
+Simply add the following overrides in an `augroup` in your `.vimrc`:
+
+    augroup JBHiglights
+        autocmd!
+        autocmd ColorScheme * highlight link ktStructure Type
+    augroup END
+
+This must be placed in an `augroup` to prevent vim-jb from overriding it.
+
+------------------------------------------------------------------------------
+
 What's the font used here?~
 
 JetBrains Mono, of course! Download it [here](https://www.jetbrains.com/lp/mono/).

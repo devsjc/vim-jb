@@ -33,6 +33,8 @@ Any of the palette colours can be overridden. See
 [Configuration](#configuration) or
 [:help g:jb_color_overrides](doc/jb.txt) for how to
 implement your own colours.
+Highlight groups can also be modified in an autoload group to change
+the look of the plugin.
 
 **Semantic language syntax highlighting**
 
@@ -115,6 +117,20 @@ let g:jb_color_overrides={
     \"keyword": {"gui": "#ff00ff", "cterm": "16"}
     \}
 ```
+
+You can also change highlight groups, overriding what is set in the plugin.
+Say you prefer how Android Studio uses the `Type` colour for Kotlin
+structures, instead of the less saturated `Keyword` of IntelliJ Idea.
+Simply add the following overrides in an `augroup` in your `.vimrc`:
+
+```vim
+augroup JBHiglights
+    autocmd!
+    autocmd ColorScheme * highlight link ktStructure Type
+augroup END
+```
+
+This must be placed in an `augroup` to prevent vim-jb from overriding it.
 
 Related Projects
 ---------------------------------------------------------------------------
