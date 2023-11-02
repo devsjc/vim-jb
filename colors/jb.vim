@@ -308,10 +308,16 @@ highlight! link vimFuncName Function
 
 " --- Kotlin (kotlin-vim/polyglot) ---
 highlight! link ktDocComment JBDocComment
-highlight! link ktDocTag JBCommentRef
-highlight! link ktDocTagParam Keyword
+highlight! link ktDocTag JBStringRef
+highlight! link ktDocTagParam Text
 highlight! link ktAnnotation Tag 
-highlight! link ktComplexInterpolationBrace Type
+highlight! link ktComplexInterpolationBrace Keyword
+highlight! link ktLabel Number
+highlight! link ktArrow Text
+highlight! link ktType Text
+highlight! link ktModifier Keyword
+highlight! link ktStructure Keyword
+highlight! link ktSimpleInterpolation Keyword
 
 " === PLUGIN SPECIFIC HIGHLIGHTS (NON-LANGUAGE) ======================================================
 
