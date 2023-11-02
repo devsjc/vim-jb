@@ -306,6 +306,13 @@ highlight! link vimIsCommand Normal
 highlight! link vimUserFunc Function
 highlight! link vimFuncName Function
 
+" --- Kotlin (kotlin-vim/polyglot) ---
+highlight! link ktDocComment JBDocComment
+highlight! link ktDocTag JBCommentRef
+highlight! link ktDocTagParam Keyword
+highlight! link ktAnnotation Tag 
+highlight! link ktComplexInterpolationBrace Type
+
 " === PLUGIN SPECIFIC HIGHLIGHTS (NON-LANGUAGE) ======================================================
 
 " --- GitGutter ---
