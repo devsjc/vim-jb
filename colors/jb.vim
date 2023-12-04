@@ -215,6 +215,19 @@ call s:h("QuickFixLine", { "fg": s:colors.link, "gui": "bold", "cterm": "bold" }
 highlight! link Debug Tag
 call s:h("debugBreakpoint", { "fg": s:colors.text, "bg": s:colors.err1 }) "Debug
 
+" Terminal
+if has('terminal')
+  let g:terminal_ansi_colors = [
+    \ s:colors.folded.gui, s:colors.err1.gui, s:colors.string.gui,
+    \ s:colors.tag.gui, s:colors.number.gui, s:colors.const.gui,
+    \ s:colors.keyword.gui, s:colors.comment.gui,
+    \ s:colors.diffdel.gui, s:colors.err.gui, s:colors.todo.gui,
+    \ s:colors.warning.gui, s:colors.function.gui, s:colors.instruction.gui,
+    \ s:colors.type.gui, s:colors.commentref.gui
+    \ ]
+endif
+
+
 " === LANGUAGE SPECIFIC HIGHLIGHTS ====================================================
 
 " --- Go (vim-go/polyglot) ---
