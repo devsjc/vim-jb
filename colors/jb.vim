@@ -44,7 +44,6 @@ function! s:h(group, style)
     \ "ctermfg=" . l:ctermfg
     \ "ctermbg=" . l:ctermbg
     \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm     : "NONE")
-    \ "ctermul=" (has_key(a:style, "ctermul") ? a:style.ctermul : "NONE")
 endfunction
 
 
