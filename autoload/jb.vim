@@ -8,7 +8,7 @@
 
 let s:path = printf('%s/palettes.json', expand('<sfile>:p:h'))
 let s:flines = readfile(s:path)
-let s:jb_palettes = js_decode(join(s:flines))
+let s:jb_palettes = json_decode(join(s:flines))
 let s:colors = {}
 
 function! jb#GetConfig()
