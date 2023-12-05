@@ -411,7 +411,66 @@ highlight! link CocGitAddedSign JBGutterAddedLine
 highlight! link CocGitChangeSign JBGutterChangedLine
 highlight! link CocGitRemovedSign JBGutterDeletedLine
 
+
+" === NEOVIM ====================================================================
+
+if has('nvim')
+  highlight! link Statusline StatusLine
+  highlight! link WinBarNC JBTree
+  highlight! link DiagnosticFloatingError ErrorText
+  highlight! link DiagnosticFloatingWarn WarningText
+  highlight! link DiagnosticFloatingInfo InfoText
+  highlight! link DiagnosticFloatingHint DiffAdd
+  highlight! link DiagnosticError ErrorText
+  highlight! link DiagnosticWarn WarningText
+  highlight! link DiagnosticInfo InfoText
+  highlight! link DiagnosticHint DiffAdd
+  highlight! link DiagnosticVirtualTextError ErrorText
+  highlight! link DiagnosticVirtualTextWarn WarningText
+  highlight! link DiagnosticVirtualTextInfo InfoText
+  highlight! link DiagnosticVirtualTextHint DiffAdd
+  highlight! link DiagnosticUnderlineError ErrorText
+  highlight! link DiagnosticUnderlineWarn WarningText
+  highlight! link DiagnosticUnderlineInfo InfoText
+  highlight! link DiagnosticUnderlineHint HintText
+  highlight! link DiagnosticSignError ErrorText
+  highlight! link DiagnosticSignWarn WarningText
+  highlight! link DiagnosticSignInfo InfoText
+  highlight! link DiagnosticSignHint DiffAdd
+  highlight! link LspDiagnosticsFloatingError DiagnosticFloatingError
+  highlight! link LspDiagnosticsFloatingWarning DiagnosticFloatingWarn
+  highlight! link LspDiagnosticsFloatingInformation DiagnosticFloatingInfo
+  highlight! link LspDiagnosticsFloatingHint DiagnosticFloatingHint
+  highlight! link LspDiagnosticsDefaultError DiagnosticError
+  highlight! link LspDiagnosticsDefaultWarning DiagnosticWarn
+  highlight! link LspDiagnosticsDefaultInformation DiagnosticInfo
+  highlight! link LspDiagnosticsDefaultHint DiagnosticHint
+  highlight! link LspDiagnosticsVirtualTextError DiagnosticVirtualTextError
+  highlight! link LspDiagnosticsVirtualTextWarning DiagnosticVirtualTextWarn
+  highlight! link LspDiagnosticsVirtualTextInformation DiagnosticVirtualTextInfo
+  highlight! link LspDiagnosticsVirtualTextHint DiagnosticVirtualTextHint
+  highlight! link LspDiagnosticsUnderlineError DiagnosticUnderlineError
+  highlight! link LspDiagnosticsUnderlineWarning DiagnosticUnderlineWarn
+  highlight! link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInfo
+  highlight! link LspDiagnosticsUnderlineHint DiagnosticUnderlineHint
+  highlight! link LspDiagnosticsSignError DiagnosticSignError
+  highlight! link LspDiagnosticsSignWarning DiagnosticSignWarn
+  highlight! link LspDiagnosticsSignInformation DiagnosticSignInfo
+  highlight! link LspDiagnosticsSignHint DiagnosticSignHint
+  highlight! link LspReferenceText DiffAdd
+  highlight! link LspReferenceRead DiffAdd
+  highlight! link LspReferenceWrite DiffAdd
+  highlight! link LspCodeLens InfoText
+  highlight! link LspCodeLensSeparator DiffAdd
+  highlight! link LspSignatureActiveParameter Search
+  highlight! link TermCursor Cursor
+  highlight! link healthError ErrorText
+  highlight! link healthSuccess DiffAdd
+  highlight! link healthWarning WarningText
+endif
+
+" === FOOTER ============================================================================
+
 " Must appear at the end of the file to work around this oddity:
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
-
