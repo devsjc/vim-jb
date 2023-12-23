@@ -143,7 +143,7 @@ highlight! link NormalNC Normal
 highlight! link Folded JBFoldedText
 highlight! link FoldColumn Folded
 highlight! link SignColumn Normal
-highlight! link Search JBSearch
+highlight! link Search JBSearchResult
 highlight! link IncSearch JBDiffChangedText
 highlight! link CurSearch IncSearch
 highlight! link ColorColumn JBTreeBG
