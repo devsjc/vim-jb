@@ -106,6 +106,15 @@ let g:jb_enable_italics=1
 colorscheme jb
 ```
 
+**Enabling Unicode**
+
+If your terminal emulator/font support unicode, opt in using
+
+```vim
+let g:jb_enable_unicode=1
+colorscheme jb
+```
+
 **Modifying a color**
 
 To choose your own colour, pick a category from the

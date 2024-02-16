@@ -23,6 +23,26 @@ let g:jb_termcolors = 256
 let s:config = jb#GetConfig()
 let s:colors = jb#GetColors(s:config.style, s:config.overrides)
 
+
+" UI configuration
+if s:config.enable_unicode == 1
+  " Use box drawing characters for vertical split
+  set fillchars-=vert:\| | set fillchars+=vert:\│
+  " Use box drawing characters for gitgutter signs
+  let g:gitgutter_sign_added = '┃'
+  let g:gitgutter_sign_modified = '┃'
+  let g:gitgutter_sign_removed = '┃'
+  let g:gitgutter_sign_removed_first_line = '┓'
+  let g:gitgutter_sign_removed_above_and_below = '╏'
+  let g:gitgutter_sign_modified_removed = '┨'
+endif
+" Remove the tilde from the end of the buffer (ending whitespace required!)
+set fillchars-=eob:\~ | set fillchars+=eob:\ 
+
+
+
+" === FUNCTIONS =======================================================================
+
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
 " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
@@ -73,6 +93,7 @@ call s:h("JBType", { "fg": s:colors.type }) " Types
 call s:h("JBTag", { "fg": s:colors.tag }) " Tags
 call s:h("JBMatchedBracket", { "fg": s:colors.text, "bg": s:colors.folded, "gui": "bold", "cterm": "bold" }) " Matching brackets
 call s:h("JBStruct", { "fg": s:colors.struct })
+call s:h("JBVirtualText", { "fg": s:colors.virtual }) " Virtual text
 
 " Diff and Merge
 call s:h("JBDiffAddedLine", { "bg": s:colors.diffadd }) " Newly inserted lines in diff
@@ -84,7 +105,7 @@ call s:h("JBDiffDeletedLine", { "bg": s:colors.diffdel }) " Deleted lines in dif
 call s:h("JBGutterAddedLine", { "fg": s:colors.gutteradd }) " Added lines in gutter
 call s:h("JBGutterChangedLine", { "fg": s:colors.guttermod }) " Changed lines in gutter
 call s:h("JBGutterDeletedLine", { "fg": s:colors.gutterdel }) " Deleted lines in gutter
-call s:h("JBGutterLineNr", { "fg": s:colors.diffdel }) " Line numbers in gutter
+call s:h("JBGutterLineNr", { "fg": s:colors.virtual }) " Line numbers in gutter
 
 " UI
 call s:h("JBEditorBG", { "bg": s:colors.editor }) " Editor background
@@ -96,7 +117,7 @@ call s:h("JBDivider", { "fg": s:colors.diffdel }) " Divider between panes
 " See :help highlight-groups for more information
 
 " --- Major ---
-call s:h("Normal", {"fg": s:colors.text, "bg": s:colors.editor}) " Normal text
+highlight! link Normal JBDefault
 highlight! link Comment JBComment
 highlight! link Constant JBConstant
 highlight! link Identifier JBFunction
@@ -119,7 +140,7 @@ highlight! link Function Identifier
 highlight! link Keyword JBKeyword
 highlight! link Conditional Keyword
 highlight! link Repeat Keyword
-highlight! link Label Keyword
+highlight! link Label JBVirtualText
 highlight! link Include Keyword
 highlight! link Define Keyword
 highlight! link Macro Keyword

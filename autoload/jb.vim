@@ -15,7 +15,8 @@ function! jb#GetConfig()
   return {
         \ 'style': get(g:, 'jb_style', 'dark'),
         \ 'overrides': get(g:, 'jb_color_overrides', {}),
-        \ 'enable_italic': get(g:, 'jb_enable_italic', 0)
+        \ 'enable_italic': get(g:, 'jb_enable_italic', 0),
+        \ 'enable_unicode': get(g:, 'jb_enable_unicode', 0),
         \ }
 endfunction
 
