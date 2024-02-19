@@ -10,19 +10,22 @@
 " === Initializaion ==================================================================
 
 highlight clear
+set cursorline
 
 if exists("syntax_on")
   syntax reset
 endif
 
+" Define the xterm settings
 set t_Co=256
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
 
 let g:colors_name="jb"
 let g:jb_termcolors = 256
 
 let s:config = jb#GetConfig()
 let s:colors = jb#GetColors(s:config.style, s:config.overrides)
-
 
 " UI configuration
 if s:config.enable_unicode == 1
@@ -40,7 +43,6 @@ endif
 set fillchars-=eob:\~ | set fillchars+=eob:\ 
 
 
-
 " === FUNCTIONS =======================================================================
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
@@ -54,8 +56,8 @@ function! s:h(group, style)
       unlet a:style.gui
     endif
   endif
-  let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm : "NONE")
-  let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm : "NONE")
+  let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm   : "NONE")
+  let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm   : "NONE" )
   execute "highlight" a:group
     \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
     \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
@@ -63,7 +65,8 @@ function! s:h(group, style)
     \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
     \ "ctermfg=" . l:ctermfg
     \ "ctermbg=" . l:ctermbg
-    \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm     : "NONE")
+    \ "cterm="   (has_key(a:style, "cterm")   ? a:style.cterm    : "NONE")
+    \ "ctermul=" (has_key(a:style, "ctermul") ? a:style.ctermul  : "NONE")
 endfunction
 
 
@@ -75,8 +78,8 @@ call s:h("JBHyperlink", { "fg": s:colors.link, "gui": "underline", "cterm": "und
 call s:h("JBTodo", { "fg": s:colors.todo }) " TODOs
 call s:h("JBSearchResult", { "bg": s:colors.search }) " Search results
 call s:h("JBFoldedText", { "fg": s:colors.comment, "bg": s:colors.folded }) " Folded text
-call s:h("JBError", { "fg": s:colors.err, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
-call s:h("JBWarning", { "fg": s:colors.warning, "gui": "underline", "cterm": "underline" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
+call s:h("JBError", { "gui": "underline",  "cterm": "undercurl", "sp": s:colors.err, "ctermul": "red" }) " Doesn't match JB exactly, can't do seperate color undercurls in terminal
+call s:h("JBWarning", { "gui": "undercurl", "cterm": "undercurl", "sp": s:colors.warning, "ctermul": "yellow" })
 call s:h("JBCursor", { "fg": s:colors.editor, "bg": s:colors.comment }) " Cursor
 
 " Language defaults
@@ -159,7 +162,7 @@ highlight! link Debug Tag
 " --- Text ---
 highlight! link Cursor JBCursor
 highlight! link LineNr JBGutterLineNr 
-highlight! link CursorLineNr Comment
+highlight! link CursorLineNr JBCommentRef
 highlight! link NormalNC Normal
 highlight! link Folded JBFoldedText
 highlight! link FoldColumn Folded
@@ -251,6 +254,9 @@ endif
 
 " === LANGUAGE SPECIFIC HIGHLIGHTS ====================================================
 
+" --- Python (python/polyglot) ---
+highlight! link pythonException Keyword
+
 " --- Go (vim-go/polyglot) ---
 highlight! link goPackage Tag
 highlight! link goBuiltins Type
@@ -258,7 +264,6 @@ highlight! link goFunction Function
 highlight! link goField JBStruct
 
 " --- JSON (vim-json/polyglot) ---
-
 highlight! link jsonKeyword Constant
 highlight! link jsonBoolean Keyword
 
