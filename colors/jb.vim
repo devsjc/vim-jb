@@ -73,7 +73,7 @@ endfunction
 " === JETBRAINS COLOR GROUPS ==========================================================
 
 " General
-call s:h("JBDefault", { "fg": s:colors.text, "bg": s:colors.editor }) " Standard text
+call s:h("JBDefault", { "fg": s:colors.text }) " Standard text
 call s:h("JBHyperlink", { "fg": s:colors.link, "gui": "underline", "cterm": "underline" })
 call s:h("JBTodo", { "fg": s:colors.todo }) " TODOs
 call s:h("JBSearchResult", { "bg": s:colors.search }) " Search results
@@ -182,6 +182,8 @@ highlight! link MatchParen JBMatchedBracket
 highlight! link Title Constant
 
 " --- Diff and Merge ---
+highlight! link Added JJBGutterAddedLine
+highlight! link Changed JBGutterChangedLine
 highlight! link DiffAdd JBDiffAddedLine
 highlight! link DiffChange JBDiffChangedLine
 highlight! link DiffText JBDiffChangedText
@@ -256,6 +258,8 @@ endif
 
 " --- Python (python/polyglot) ---
 highlight! link pythonException Keyword
+highlight! link pythonDecoratorName Tag
+highlight! link pythonDecorator Tag
 
 " --- Go (vim-go/polyglot) ---
 highlight! link goPackage Tag
@@ -311,6 +315,7 @@ highlight! link rustMacroRepeatDelimiters rustMacro
 highlight! link rustMacroVariable Function
 highlight! link rustLifetime JBStruct
 highlight! link rustLabel JBStruct
+highlight! link rustPanic Tag
 highlight! link rustStorage Keyword
 highlight! link rustCharacter String
 highlight! link rustSelf Keyword
